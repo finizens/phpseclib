@@ -3442,6 +3442,9 @@ class SSH2
                                 $this->packet_size_client_to_server[$channel] = $temp['packet_size_client_to_server'];
                                 $result = $client_channel == $channel ? true : $this->get_channel_packet($client_channel, $skip_extended);
                                 $this->on_channel_open();
+
+                                $this->channel_status[$channel] = NET_SSH2_MSG_CHANNEL_OPEN_CONFIRMATION;
+
                                 return $result;
                             //case NET_SSH2_MSG_CHANNEL_OPEN_FAILURE:
                             default:
